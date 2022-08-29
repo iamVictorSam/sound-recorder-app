@@ -34,12 +34,12 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   void initState() {
-    recorder!.init();
     super.initState();
+    recorder.init();
   }
 
   @override
-  void dispose() {  
+  void dispose() {
     recorder.dispose();
     super.dispose();
   }
@@ -50,8 +50,15 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: const Text('Sound Recorder App'),
       ),
-      body: Center(
-        child: buildStartButton(),
+      body: Column(
+        children: [
+          Center(
+            child: buildStartButton(),
+          ),
+          Center(
+            child: Text('this is a test'),
+          ),
+        ],
       ),
     );
   }
@@ -71,9 +78,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         onPressed: () async {
           final isRecording = await recorder.toggleRecorder();
-          setState(() {
-            
-          });
+          setState(() {});
         },
         icon: Icon(icon),
         label: Text(
